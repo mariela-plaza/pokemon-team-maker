@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import PokemonTeamView from "../views/PokemonTeamView";
+import PokemonListView from "../views/PokemonListView";
 
 const routes = [
   {
@@ -9,7 +9,7 @@ const routes = [
   {
     path: "/pokemon-team",
     name: "pokemon-team",
-    component: PokemonTeamView,
+    component: PokemonListView,
   },
 ];
 
