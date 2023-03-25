@@ -1,5 +1,8 @@
 <template>
-  <div class="card" style="width: 18rem">
+  <div
+    class="card"
+    :class="{ 'lg-card': parent === 'list', 'md-card': parent === 'team' }"
+  >
     <img :src="sprite" class="pokemon-img" :alt="name" />
     <div>
       <h5 class="pokemon-name">{{ formattedName }}</h5>
@@ -18,6 +21,10 @@ export default {
       type: String,
       required: true,
     },
+    parent: {
+      type: String,
+      default: "list",
+    },
   },
   computed: {
     formattedName() {
@@ -35,6 +42,13 @@ export default {
 </script>
 
 <style scoped>
+.lg-card {
+  max-width: 18rem;
+}
+
+.md-card {
+  max-width: 8rem;
+}
 .pokemon-img {
   width: 75%;
   align-self: center;
