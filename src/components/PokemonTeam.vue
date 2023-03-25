@@ -2,7 +2,11 @@
   <div class="pokemon-team">
     <div v-if="selectedPokemon.length > 0">
       <div v-for="pokemon in selectedPokemon" :key="pokemon.name">
-        <pokemon-card parent="team"></pokemon-card>
+        <pokemon-card
+          :name="pokemon.name"
+          :url="pokemon.url"
+          parent="team"
+        ></pokemon-card>
       </div>
     </div>
     <div v-else>

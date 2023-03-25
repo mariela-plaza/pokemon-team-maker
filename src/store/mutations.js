@@ -9,7 +9,9 @@ const ADD_SELECTED_POKEMON = (state, newPokemon) => {
 };
 
 const REMOVE_SELECTED_POKEMON = (state, pokemonToRemove) => {
-  state.selectedPokemon.filter((p) => p.id !== pokemonToRemove.id);
+  state.selectedPokemon = state.selectedPokemon.filter(
+    (p) => p.name !== pokemonToRemove.name
+  );
 };
 
 export const pokemonMutations = {

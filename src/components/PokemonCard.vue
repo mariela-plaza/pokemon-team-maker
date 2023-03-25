@@ -4,13 +4,23 @@
     :class="{ 'lg-card': parent === 'list', 'md-card': parent === 'team' }"
   >
     <img :src="sprite" class="pokemon-img" :alt="name" />
-    <div>
+    <div class="card-body">
       <h5 class="pokemon-name">{{ formattedName }}</h5>
+      <button
+        v-if="parent === 'list'"
+        class="btn"
+        :class="{ 'btn-danger': isSelected, 'btn-primary': !isSelected }"
+        @click="updateSelectedPokemon"
+      >
+        {{ actionText }}
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   props: {
     name: {
@@ -27,6 +37,10 @@ export default {
     },
   },
   computed: {
+    ...mapGetters({ selectedPokemon: "getSelectedPokemon" }),
+    isSelected() {
+      return this.selectedPokemon.find((p) => p.name === this.name);
+    },
     formattedName() {
       return this.name.charAt(0).toUpperCase() + this.name.slice(1);
     },
@@ -36,6 +50,24 @@ export default {
     },
     sprite() {
       return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.entryNumber}.png`;
+    },
+    actionText() {
+      return this.isSelected ? "Remove from party" : "Add to party";
+    },
+  },
+  methods: {
+    ...mapActions(["selectPokemon", "deselectPokemon"]),
+    updateSelectedPokemon() {
+      const pokemon = {
+        name: this.name,
+        url: this.url,
+      };
+
+      if (!this.isSelected) {
+        this.selectPokemon(pokemon);
+        return;
+      }
+      this.deselectPokemon(pokemon);
     },
   },
 };
@@ -48,6 +80,10 @@ export default {
 
 .md-card {
   max-width: 8rem;
+}
+
+.card-body {
+  padding: 1rem;
 }
 .pokemon-img {
   width: 75%;
