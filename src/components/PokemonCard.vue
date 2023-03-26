@@ -74,16 +74,20 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  margin: 0 auto;
+}
 .lg-card {
   max-width: 18rem;
 }
 
 .md-card {
-  max-width: 8rem;
+  max-width: 12rem;
+  border: 1px dashed #e1dbdb;
 }
 
 .card-body {
-  padding: 1rem;
+  padding: 1rem 0;
 }
 .pokemon-img {
   width: 75%;
@@ -91,5 +95,11 @@ export default {
 }
 .pokemon-name {
   padding-bottom: 1rem;
+}
+
+@media (max-width: 767px) {
+  .pokemon-name {
+    padding-bottom: 0;
+  }
 }
 </style>

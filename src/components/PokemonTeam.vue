@@ -1,7 +1,11 @@
 <template>
   <div class="pokemon-team">
-    <div v-if="selectedPokemon.length > 0">
-      <div v-for="pokemon in selectedPokemon" :key="pokemon.name">
+    <div class="row pokemon-team-container" v-if="selectedPokemon.length > 0">
+      <div
+        v-for="pokemon in selectedPokemon"
+        :key="pokemon.name"
+        class="col-12 col-sm-6 col-md-4"
+      >
         <pokemon-card
           :name="pokemon.name"
           :url="pokemon.url"
@@ -30,8 +34,19 @@ export default {
 
 <style scoped>
 .pokemon-team {
-  width: 40rem;
+  width: 54rem;
   border: 1px solid #e1dbdb;
   border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.pokemon-team-container {
+  row-gap: 0.75rem;
+}
+
+@media (max-width: 575px) {
+  .pokemon-team {
+    width: 25rem;
+  }
 }
 </style>
