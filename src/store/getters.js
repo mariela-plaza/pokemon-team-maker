@@ -1,9 +1,5 @@
-export const getAllPokemon = (state) => {
-  return state.pokemonList;
-};
-
-export const getPokemonById = (state, pokemonId) => {
-  return state.pokemonList.find((p) => p.id === pokemonId);
+export const getPokemon = (state) => {
+  return state.filteredPokemon;
 };
 
 export const getSelectedPokemon = (state) => {
@@ -15,8 +11,7 @@ export const getLastSelectedPokemon = (state) => {
 };
 
 export const pokemonGetters = {
-  getAllPokemon,
-  getPokemonById,
+  getPokemon,
   getSelectedPokemon,
   getLastSelectedPokemon,
 };

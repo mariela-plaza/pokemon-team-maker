@@ -1,5 +1,6 @@
 export const pokemonState = {
-  pokemonList: [],
+  allPokemon: [],
+  filteredPokemon: [],
   selectedPokemon: [],
   lastSelectedPokemon: null,
 };

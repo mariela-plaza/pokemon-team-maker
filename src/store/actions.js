@@ -8,6 +8,10 @@ const fetchPokemonList = async ({ commit }) => {
   commit("SET_POKEMON_LIST", pokemon);
 };
 
+const filterPokemonList = ({ commit }, pokemonFilter) => {
+  commit("FILTER_POKEMON_LIST", pokemonFilter);
+};
+
 const setSelectedPokemon = async ({ commit }, selectedPokemon) => {
   commit("SET_LAST_SELECTED_POKEMON", selectedPokemon);
 };
@@ -22,6 +26,7 @@ const deselectPokemon = ({ commit }, pokemonToRemove) => {
 
 export const pokemonActions = {
   fetchPokemonList,
+  filterPokemonList,
   selectPokemon,
   deselectPokemon,
   setSelectedPokemon,
