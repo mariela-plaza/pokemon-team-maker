@@ -66,7 +66,6 @@ export default {
 
       if (!this.isSelected) {
         this.selectPokemon(pokemon);
-        this.setSelectedPokemon(`${pokemon.name}_${this.parent}`);
         return;
       }
       this.deselectPokemon(pokemon);

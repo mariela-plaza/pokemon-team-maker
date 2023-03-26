@@ -12,7 +12,7 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters({ lastSelectedPokemon: "getLastSelectedPokemon" }),
+    ...mapGetters({ selectedPokemon: "getSelectedPokemon" }),
   },
   methods: {
     toTop() {
@@ -23,10 +23,12 @@ export default {
       });
     },
     toLastSelectedPokemon() {
-      if (!this.lastSelectedPokemon) return;
-      console.log(this.lastSelectedPokemon);
+      if (!this.selectedPokemon.length) return;
+
+      const lastSelectedPokemon =
+        this.selectedPokemon[this.selectedPokemon.length - 1];
       document
-        .getElementById(this.lastSelectedPokemon)
+        .getElementById(`${lastSelectedPokemon.name}_list`)
         .scrollIntoView({ behavior: "smooth" });
     },
   },
