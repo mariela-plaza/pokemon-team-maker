@@ -8,6 +8,10 @@ const fetchPokemonList = async ({ commit }) => {
   commit("SET_POKEMON_LIST", pokemon);
 };
 
+const setSelectedPokemon = async ({ commit }, selectedPokemon) => {
+  commit("SET_LAST_SELECTED_POKEMON", selectedPokemon);
+};
+
 const selectPokemon = ({ commit }, newPokemon) => {
   commit("ADD_SELECTED_POKEMON", newPokemon);
 };
@@ -20,4 +24,5 @@ export const pokemonActions = {
   fetchPokemonList,
   selectPokemon,
   deselectPokemon,
+  setSelectedPokemon,
 };

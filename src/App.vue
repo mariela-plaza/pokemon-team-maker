@@ -1,6 +1,14 @@
 <template>
+  <top-bar></top-bar>
   <router-view />
 </template>
+<script>
+import TopBar from "./ui/TopBar.vue";
+
+export default {
+  components: { TopBar },
+};
+</script>
 
 <style>
 #app {
@@ -11,7 +19,7 @@
   color: #2c3e50;
 }
 
-body {
-  margin-top: 3rem;
+html {
+  scroll-behavior: smooth;
 }
 </style>

@@ -2,6 +2,7 @@
   <div
     class="card"
     :class="{ 'lg-card': parent === 'list', 'md-card': parent === 'team' }"
+    :id="`${name}_${parent}`"
   >
     <img :src="sprite" class="pokemon-img" :alt="name" />
     <div class="card-body">
@@ -56,7 +57,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["selectPokemon", "deselectPokemon"]),
+    ...mapActions(["selectPokemon", "deselectPokemon", "setSelectedPokemon"]),
     updateSelectedPokemon() {
       const pokemon = {
         name: this.name,
@@ -65,6 +66,7 @@ export default {
 
       if (!this.isSelected) {
         this.selectPokemon(pokemon);
+        this.setSelectedPokemon(`${pokemon.name}_${this.parent}`);
         return;
       }
       this.deselectPokemon(pokemon);
